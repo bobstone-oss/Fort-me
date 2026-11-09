@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortnite Hub - Guías y Actualizaciones</title>
+    <!-- Importación de fuente gamer moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Burbank+Big+Condensed&display=swap" rel="stylesheet">
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-purple: #92278f;
+            --neon-blue: #00d2ff;
+            --fortnite-yellow: #f2a900;
+            --dark-bg: #0b0e14;
+            --card-bg: #151a24;
+            --text-light: #ffffff;
+            --text-gray: #a0aec0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Barra de navegación */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(11, 14, 20, 0.95);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary-purple);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            font-family: 'Burbank Big Condensed', sans-serif;
+            font-size: 2.2rem;
+            color: var(--fortnite-yellow);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px var(--primary-purple);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 1;
+            white-space: nowrap;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* Sección Hero / Portada */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(11, 14, 20, 0.5), rgba(11, 14, 20, 0.9)),
+                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Burbank Big Condensed', sans-serif;
+            font-size: 5rem;
+            color: var(--fortnite-yellow);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px var(--primary-purple);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--primary-purple), var(--neon-blue));
+            color: var(--text-light);
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 15px rgba(146, 39, 143, 0.5);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px var(--neon-blue);
+        }
+
+        /* Secciones Principales */
+        section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Burbank Big Condensed', sans-serif;
+            font-size: 3rem;
+            color: var(--neon-blue);
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Grid de Tarjetas */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 2px solid var(--primary-purple);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-blue);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--fortnite-yellow);
+        }
+
+        .card-content p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        /* Sección de Próximas Actualizaciones (Timeline / Filtraciones) */
+        .update-box {
+            background: linear-gradient(90deg, rgba(146,39,143,0.2) 0%, rgba(0,210,255,0.2) 100%);
+            border-left: 5px solid var(--fortnite-yellow);
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .update-box h4 {
+            font-size: 1.4rem;
+            color: var(--fortnite-yellow);
+            margin-bottom: 5px;
+        }
+
+        .update-box span {
+            font-size: 0.9rem;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: #05070a;
+            text-align: center;
+            padding: 30px;
+            color: var(--text-gray);
+            border-top: 2px solid var(--primary-purple);
+            font-size: 1rem;
+        }
+
+        /* Menú hamburguesa para móvil */
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: 2px solid var(--primary-purple);
+            border-radius: 6px;
+            color: var(--fortnite-yellow);
+            font-size: 1.4rem;
+            padding: 6px 12px;
+            cursor: pointer;
+            z-index: 1001;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .menu-toggle:hover {
+            border-color: var(--neon-blue);
+            color: var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* Insignias para armas meta */
+        .tier-badge {
+            display: inline-block;
+            background: var(--fortnite-yellow);
+            color: #0b0e14;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tier-badge.s-tier {
+            background: linear-gradient(135deg, #ff4757, #ff6b81);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+        }
+
+        .tier-badge.a-tier {
+            background: linear-gradient(135deg, var(--fortnite-yellow), #ffd32a);
+            color: #0b0e14;
+            box-shadow: 0 0 10px rgba(242, 169, 0, 0.4);
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 18px;
+            }
+            .logo {
+                font-size: 1.6rem;
+            }
+            .menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(11, 14, 20, 0.98);
+                border-bottom: 2px solid var(--neon-blue);
+                padding: 25px 20px;
+                gap: 20px;
+                text-align: center;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            }
+            nav ul.active {
+                display: flex;
+            }
+            .hero h1 { font-size: 3.2rem; }
+            .hero p { font-size: 1.15rem; }
+            section { padding: 70px 20px; }
+            .section-title { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de Navegación -->
+    <header>
+        <div class="logo"><i class="fa-solid fa-gamepad"></i> Fortnite Hub</div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#guias">Guías</a></li>
+                <li><a href="#actualizaciones">Próximas Updates</a></li>
+                <li><a href="#armas">Meta Actual</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Portada -->
+    <section id="inicio" class="hero">
+        <h1>Domina la Isla</h1>
+        <p>Tu centro definitivo de información, guías estratégicas, consejos tácticos y filtraciones de las próximas actualizaciones de Fortnite.</p>
+        <a href="#guias" class="btn">Explorar Guías</a>
+    </section>
+
+    <!-- Sección de Guías -->
+    <section id="guias">
+        <h2 class="section-title">Guías de Supervivencia y Consejos</h2>
+        <div class="grid-container">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=600&auto=format&fit=crop" alt="Construcción">
+                <div class="card-content">
+                    <h3>Técnicas de Construcción</h3>
+                    <p>Aprende a mejorar tus ediciones en modo normal o domina las coberturas rápidas en Cero Construcción para ganar ventaja en los enfrentamientos finales.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=600&auto=format&fit=crop" alt="Rotación">
+                <div class="card-content">
+                    <h3>Rotaciones Inteligentes</h3>
+                    <p>Descubre los mejores caminos y vehículos para moverte por el mapa sin quedar atrapado en la tormenta, asegurando el mejor botín.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600&auto=format&fit=crop" alt="Armamento">
+                <div class="card-content">
+                    <h3>Gestión del Inventario</h3>
+                    <p>Cómo equilibrar tus armas de corta y larga distancia, escudos y curaciones para estar preparado ante cualquier combate inesperado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Futuras Actualizaciones -->
+    <section id="actualizaciones">
+        <h2 class="section-title">Próximas Actualizaciones y Filtraciones</h2>
+
+        <div class="update-box">
+            <span>Fecha estimada: Próxima semana</span>
+            <h4>Parche de Contenido y Nuevas Colaboraciones</h4>
+            <p>Los filtradores apuntan a la llegada de nuevas skins tematizadas de franquicias populares y ajustes de balance para equilibrar el daño de las escopetas principales.</p>
+        </div>
+
+        <div class="update-box">
+            <span>Próxima Temporada</span>
+            <h4>Eventos de Cierre y Nuevo Evento en Vivo</h4>
+            <p>Se rumorea un evento interactivo masivo que marcará el fin de la temporada actual, abriendo paso a un mapa completamente renovado con nuevas mecánicas de movilidad.</p>
+        </div>
+    </section>
+
+    <!-- Sección Meta Actual de Armas -->
+    <section id="armas">
+        <h2 class="section-title">Meta Actual de Armas</h2>
+        <div class="grid-container">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1595590424283-b8f17842773f?q=80&w=600&auto=format&fit=crop" alt="Escopeta de Corredera">
+                <div class="card-content">
+                    <span class="tier-badge s-tier">Tier S - Imprescindible</span>
+                    <h3>Escopeta de Corredera</h3>
+                    <p>El estándar de oro para combates cuerpo a cuerpo. Su alto daño por impacto a la cabeza la convierte en el arma obligatoria en cualquier inventario competitivo.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1589241062272-c0a000072dfa?q=80&w=600&auto=format&fit=crop" alt="Fusil de Asalto de Ráfaga">
+                <div class="card-content">
+                    <span class="tier-badge s-tier">Tier S - Larga Distancia</span>
+                    <h3>Fusil de Asalto con Mira</h3>
+                    <p>Precisión letal a media y larga distancia con retroceso reducido. Ideal para desgastar a rivales antes de iniciar un asalto directo.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?q=80&w=600&auto=format&fit=crop" alt="Subfusil de Disparo Rápido">
+                <div class="card-content">
+                    <span class="tier-badge a-tier">Tier A - Presión Continua</span>
+                    <h3>Subfusil de Alta Cadencia</h3>
+                    <p>Excelente para destruir estructuras enemigas y rematar oponentes en combates cerrados justo después de un disparo de escopeta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2026 Fortnite Hub. Un sitio web informativo creado para fans del juego. No está afiliado oficialmente con Epic Games.</p>
+    </footer>
+
+    <!-- Script interactivo -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    if (navMenu.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-xmark');
+                    } else {
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+
+            // Cerrar el menú al hacer clic en un enlace
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
